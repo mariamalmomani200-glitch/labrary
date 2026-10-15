@@ -456,3 +456,50 @@ button:focus-visible, input:focus-visible, select:focus-visible {
     transition-duration: .01ms !important;
   }
 }
+
+/* ===== Language switch + English (LTR) support =====
+   Paste this at the END of your style.css */
+ 
+.lang-button {
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid #5b46362b;
+  border-radius: 99px;
+  background: #fffaef7a;
+  color: #604a38;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform .2s, background .2s;
+}
+.lang-button:hover { transform: translateY(-2px); background: #fff8ec; }
+ 
+/* Mirror the physically-positioned pieces when the page is LTR */
+[dir="ltr"] .book-badge { right: auto; left: 24px; }
+[dir="ltr"] .favorite-button { left: auto; right: 25px; }
+[dir="ltr"] .cover-spine { right: auto; left: 0; }
+[dir="ltr"] .search-field svg { right: auto; left: 15px; }
+[dir="ltr"] .search-field input { padding: 0 15px 0 44px; }
+[dir="ltr"] .book-price { direction: ltr; }
+[dir="ltr"] .discovery::after { left: auto; right: -70px; }
+[dir="ltr"] .cart-drawer {
+  left: auto;
+  right: 0;
+  box-shadow: -10px 0 40px #2d1c0f38;
+  animation-name: slide-in-ltr;
+}
+[dir="ltr"] .hero h1 { letter-spacing: -.01em; }
+[dir="ltr"] .eyebrow,
+[dir="ltr"] .section-kicker { letter-spacing: .03em; }
+ 
+@keyframes slide-in-ltr {
+  from { opacity: .7; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+ 
+@media (max-width: 680px) {
+  .lang-button { height: 36px; padding: 0 11px; font-size: 12px; }
+  [dir="ltr"] .book-badge { right: auto; left: 15px; }
+  [dir="ltr"] .favorite-button { left: auto; right: 15px; }
+}
+ 
